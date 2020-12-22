@@ -1,6 +1,9 @@
 /node_modules
 /public/hot
 /public/storage
+/public/images/completedoffer
+/public/images/talents
+/public/images/users
 /storage/*.key
 /vendor
 .env
