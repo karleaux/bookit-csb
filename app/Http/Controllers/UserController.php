@@ -2,10 +2,12 @@
 
 namespace BookIt\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use BookIt\User;
 use BookIt\Talent;
+use Illuminate\Http\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -32,13 +34,13 @@ class UserController extends Controller
 
     public function edit_save(Request $request){
         $user = Auth::user();
-
         if($request->imageupload != null){
             $imageName = $user->user_id.'.'.$request->imageupload->getClientOriginalExtension();
             $request->validate([
             'imageupload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            $request->imageupload->move(public_path('images/users'), $imageName);
+            Storage::disk('s3')->putFileAs('images/users', $request->imageupload, $imageName, 'public');
+            //$request->imageupload->move(public_path('images/users'), $imageName);
         } else {
             $imageName = Auth::user()->imageurl;
         }
@@ -46,7 +48,7 @@ class UserController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->location = $request->input('location');
-        $user->imageurl = $imageName;
+        $user->imageurl = Storage::url('images/users/'.$imageName);
         $user->userbio = $request->input('userbio');
         $user->save();
         $request->flash('message', 'User successfully edited.');
@@ -77,12 +79,13 @@ class UserController extends Controller
             $request->validate([
                 'imageupload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:13300',
             ]);
-            $request->imageupload->move(public_path('images/talents'), $imageName);
+            Storage::disk('s3')->putFileAs('images/talents', $request->imageupload, $imageName, 'public');
+            //$request->imageupload->move(public_path('images/talents'), $imageName);
         } else {
             $imageName = 'default.jpg';
         }
         $talent = Talent::find($lastid);
-        $talent -> image_url = $imageName;
+        $talent -> image_url = Storage::url('images/talents/'.$imageName);
         $talent -> save();
         $request -> flash('message', 'Talent Added.');
         return redirect('user/profile');
@@ -107,12 +110,13 @@ class UserController extends Controller
             $request->validate([
                 'imageupload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            $request->imageupload->move(public_path('images/talents'), $imageName);
+            Storage::disk('s3')->putFileAs('images/talents', $request->imageupload, $imageName, 'public');
+            //$request->imageupload->move(public_path('images/talents'), $imageName);
         } else {
             $imageName = 'default.jpg';
         }
         $talent = Talent::find($lastid);
-        $talent -> image_url = $imageName;
+        $talent -> image_url = Storage::url('images/talents/'.$imageName);
         $talent -> save();
         $request -> flash('message', 'Talent Added.');
         return redirect('user/profile');

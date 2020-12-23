@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-4">
             <div style="
-                    background:url('{{ asset('images/users/'.$user->imageurl) }}');
+                    background:url('{{ $user->imageurl }}');
                     background-size:cover;
                     background-position:center;
                     border-radius:100%;
@@ -39,7 +39,7 @@
         <div class="card mx-2 my-2 bg-white shadow"
             style="min-width: 30%; width: auto; height: 500px;">
             <div class="card-img-top" style="
-                        background:url('{{ asset('images/talents/'.$talent->image_url) }}');
+                        background:url('{{ $talent->image_url }}');
                         background-size:cover;
                         background-position:center;
                         height:300px;

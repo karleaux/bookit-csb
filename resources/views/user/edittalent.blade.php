@@ -17,7 +17,7 @@
             <div class="col-6">
                 <div class="col-6 p-relative">
                     <div class="card-img-top" style="
-                    background:url('{{ asset('images/talents/'.$talents->image_url) }}');
+                    background:url('{{ $talents->image_url }}');
                     background-size:cover;
                     background-position:center;
                     height:300px;

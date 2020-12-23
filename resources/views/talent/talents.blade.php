@@ -22,7 +22,7 @@
                     </div>
                     <div class="card-footer">
                         <div style="
-                            background:url('{{ asset('/images/users/'.$query->user()->imageurl) }}');
+                            background:url('{{ $query->user()->imageurl }}');
                             background-size:cover;
                             background-position:center;
                             border-radius:100%;
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-4" style="
-                    background:url('{{ asset('/images/talents/'.$query->image_url) }}');
+                    background:url('{{ $query->image_url }}');
                     background-size:cover;
                     background-position:center;
                     border-radius:0 15px 15px 0;
@@ -67,7 +67,7 @@
                     </div>
                     <div class="card-footer">
                         <div style="
-                            background:url('{{ asset('/images/users/'.$talent->user()->imageurl) }}');
+                            background:url('{{ $talent->user()->imageurl }}');
                             background-size:cover;
                             background-position:center;
                             border-radius:100%;
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="col-4" style="
-                    background:url('{{ asset('/images/talents/'.$talent->image_url) }}');
+                    background:url('{{ $talent->image_url }}');
                     background-size:cover;
                     background-position:center;
                     border-radius:0 15px 15px 0;

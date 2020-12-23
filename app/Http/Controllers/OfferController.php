@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use BookIt\User;
 use BookIt\Talent;
 use BookIt\Offer;
+use Illuminate\Support\Facades\Storage;
 
 class OfferController extends Controller
 {
@@ -98,11 +99,12 @@ class OfferController extends Controller
             $request->validate([
             'imageupload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            $request->imageupload->move(public_path('images/completedoffer'), $imageName);
+            Storage::disk('s3')->putFileAs('images/completedoffer', $request->imageupload, $imageName, 'public');
+            //$request->imageupload->move(public_path('images/completedoffer'), $imageName);
         } else {
             $imageName = Auth::user()->imageurl;
         }
-        $offer -> image_url =  $imageName;
+        $talent -> image_url = Storage::url('images/completedoffer/'.$imageName);
         $offer -> status = 'Completed';
         $offer -> save();
         return redirect('/offer/gettalentrequests');

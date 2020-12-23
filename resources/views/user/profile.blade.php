@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-4">
             <div style="
-                    background:url('{{ asset('images/users/'.Auth::user()->imageurl) }}');
+                    background:url('{{ Auth::user()->imageurl }}');
                     background-size:cover;
                     background-position:center;
                     border-radius:100%;
@@ -52,7 +52,7 @@
         <div class="card mx-2 my-2 bg-white shadow"
             style="width:25em; height: 500px;">
             <div class="card-img-top" style="
-                        background:url('{{ asset('images/talents/'.$talent->image_url) }}');
+                        background:url('{{ $talent->image_url }}');
                         background-size:cover;
                         background-position:center;
                         height:300px;

@@ -86,7 +86,7 @@
                             @endif
                         @else
                             <div style="
-                            background:url('{{ asset('images/users/'.Auth::user()->imageurl) }}');
+                            background:url('{{ Auth::user()->imageurl }}');
                             background-size:cover;
                             background-position:center;
                             border-radius:100%;

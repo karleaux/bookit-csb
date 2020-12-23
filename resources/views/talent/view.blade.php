@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="card-img-top" style="
-        background:url('{{ asset('images/talents/'.$talent->image_url) }}');
+        background:url('{{ $talent->image_url }}');
         background-size:cover;
         background-position:center;
         width:100%;
