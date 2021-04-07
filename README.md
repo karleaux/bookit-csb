@@ -6,4 +6,4 @@ It was a web app built on [Laravel 7](https://laravel.com/docs/7.x/releases) and
 
 [You can view a live demo of the app here](https://bookit-csb.herokuapp.com/).
 
-> The app was built by then-students [@karleaux](https://github.com/karleaux), [@jose-bamboo](https://github.com/karleaux), [@tmunoz200168](https://github.com/tmunoz200168) and [@nardude](https://github.com/nardude)
+> The app was built by then-students [@karleaux](https://github.com/karleaux), [@jose-bamboo](https://github.com/jose-bamboo), [@tmunoz200168](https://github.com/tmunoz200168) and [@nardude](https://github.com/nardude)
